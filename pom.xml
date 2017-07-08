@@ -16,4 +16,33 @@
         <version>1.0.2</version>
     </dependency>
   </dependencies>  
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <executions>
+                <execution>
+                    <id>publish</id>
+                    <goals>
+                        <goal>java</goal>
+                    </goals>
+                    <configuration>
+                        <mainClass>mqtt.Publisher</mainClass>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>suscribe</id>
+                    <goals>
+                        <goal>java</goal>
+                    </goals>
+                    <configuration>
+                        <mainClass>mqtt.Suscriber</mainClass>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+     </plugins>
+  </build>
 </project>
