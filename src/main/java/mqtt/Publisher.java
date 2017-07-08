@@ -1,5 +1,7 @@
 package mqtt;
 
+import java.util.Scanner;
+
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -10,7 +12,7 @@ import org.eclipse.paho.client.mqttv3.MqttTopic;
 public class Publisher {
  
 	public static final String BROKER_URL = "tcp://localhost:1883"; //Broker local
-	public static final String TOPIC_TEMPERATURE = "sensor1/temperatura"; // Topico bajo el cual publica
+	public static final String TOPIC_TEMPERATURE = "sensor/temperatura"; // Topico bajo el cual publica
 	
     private MqttClient client;
     
@@ -34,9 +36,15 @@ public class Publisher {
     		options.setCleanSession(false);
         
     		client.connect(options);
+    		System.out.println("Conexion con Broker establecida");
+    		
+    		System.out.println("Ingrese topic bajo el cual publicar: ");
+    		Scanner scanner = new Scanner(System.in);
+    		String topic = scanner.nextLine();
     		
     		while(true) {
-    			publishTemp();  //Publica temperatura cada 5 seg
+    			System.out.println("Publicando datos en topic: " + topic);
+    			publishTemp(topic);  //Publica temperatura cada 5 seg
     			Thread.sleep(5000);
     		}
     	}catch(MqttException e) {
@@ -46,12 +54,12 @@ public class Publisher {
 		}
     }
     
-    private void publishTemp() throws MqttException { //Publica temperatura generando un numero aleatoreo
-    	MqttTopic topic = client.getTopic(TOPIC_TEMPERATURE);
+    private void publishTemp(String topic) throws MqttException { //Publica temperatura generando un numero aleatoreo
+    	MqttTopic mqttTopic = client.getTopic(topic);
     	
     	String temp = Utils.createRandomNumberBetween(15, 25) + "°C";
     	
-    	topic.publish(new MqttMessage(temp.getBytes())); //Publica mensaje transformandolo en una secuencia de Bytes
+    	mqttTopic.publish(new MqttMessage(temp.getBytes())); //Publica mensaje transformandolo en una secuencia de Bytes
     }
     
 	public static void main(String[] args) {
