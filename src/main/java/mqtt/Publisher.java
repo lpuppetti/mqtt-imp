@@ -1,5 +1,6 @@
 package mqtt;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -17,8 +18,10 @@ public class Publisher {
     private MqttClient client;
     
     public Publisher(){ // Constructor se define el cliente MQTT
+    	
+    	 Random randomGen = new Random();
 
-         String clientId = Utils.getMacAddress() + "-pub"; // Obtiene dir MAC de la pc que publica
+         String clientId = Utils.getMacAddress() + "-pub" + randomGen.nextInt(10); // Obtiene dir MAC de la pc que publica
          try
          {
               client = new MqttClient(BROKER_URL, clientId);
