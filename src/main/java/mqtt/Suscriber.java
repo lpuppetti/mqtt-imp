@@ -12,7 +12,7 @@ public class Suscriber {
 	String clientId = Utils.getMacAddress() + "-sub";
 	private MqttClient client;
 	
-	public Suscriber() {
+	public Suscriber() {  // Constructor se define el cliente MQTT
 		
 		try {
 			client = new MqttClient(BROKER_URL, clientId);
@@ -23,7 +23,7 @@ public class Suscriber {
 		}
 	}
 	
-	public void startSub() {
+	public void startSub() { //Cpnecta con el Broker y se suscribe a un topico
 		
 		try {
 			client.setCallback(new SuscriberCallback());
