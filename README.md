@@ -12,8 +12,7 @@ Pasos para ejecutar:
 
 NOTA: Se puede ejecutar mas de una instacia de la clase Publiser abriendo varias consolas e ingresando otro topico(EJ: prueba/sensor2).
 
--Abrir nueva consola y ejecutar $ mvn exec:java@suscribe. Esto inicia la clase Suscriber, solicitara que se indique un topico de los ingresados anteriormente y comenzara a mostrar los mensajes recibidos.
+-Abrir nueva consola y ejecutar $ mvn exec:java@subscribe. Esto inicia la clase Subscriber, solicitara que se indique un topico de los ingresados anteriormente y comenzara a mostrar los mensajes recibidos.
 
-NOTA: Si se ejecutaron mas de una instancia de Publisher se puede conectar a un especifica a travez del topico(EJ: prueba/sensor1) o a
-varias con el comodin # (EJ: prueba/#).
+NOTA: Si se ejecutaron mas de una instancia de Publisher se puede conectar a un especifica a travez del topico(EJ: prueba/sensor1) o a varias con el comodin # (EJ: prueba/#).
 
