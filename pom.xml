@@ -33,12 +33,12 @@
                     </configuration>
                 </execution>
                 <execution>
-                    <id>suscribe</id>
+                    <id>subscribe</id>
                     <goals>
                         <goal>java</goal>
                     </goals>
                     <configuration>
-                        <mainClass>mqtt.Suscriber</mainClass>
+                        <mainClass>mqtt.Subscriber</mainClass>
                     </configuration>
                 </execution>
             </executions>

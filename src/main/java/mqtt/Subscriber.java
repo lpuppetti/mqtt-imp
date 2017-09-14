@@ -5,14 +5,15 @@ import java.util.Scanner;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-public class Suscriber {
+//Se suscribe a un topic y recibe los mensajes publicados
+public class Subscriber {
 	
 	public static final String BROKER_URL = "tcp://localhost:1883";
 	
 	String clientId = Utils.getMacAddress() + "-sub";
 	private MqttClient client;
 	
-	public Suscriber() {  // Constructor se define el cliente MQTT
+	public Subscriber() {  // Constructor se define el cliente MQTT
 		
 		try {
 			client = new MqttClient(BROKER_URL, clientId);
@@ -23,10 +24,10 @@ public class Suscriber {
 		}
 	}
 	
-	public void startSub() { //Cpnecta con el Broker y se suscribe a un topico
+	public void startSub() { //Conecta con el Broker y se suscribe a un topico
 		
 		try {
-			client.setCallback(new SuscriberCallback());
+			client.setCallback(new SubscriberCallback());
 			client.connect();
 			System.out.println("Conexion establecida con Broker");
 			
@@ -44,8 +45,8 @@ public class Suscriber {
 	}
 	
 	public static void main(String[] args) {
-		Suscriber suscriber = new Suscriber();
-		suscriber.startSub();
+		Subscriber subscriber = new Subscriber();
+		subscriber.startSub();
 
 	}
 
