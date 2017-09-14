@@ -13,7 +13,6 @@ import org.eclipse.paho.client.mqttv3.MqttTopic;
 public class Publisher {
  
 	public static final String BROKER_URL = "tcp://localhost:1883"; //Broker local
-	public static final String TOPIC_TEMPERATURE = "sensor/temperatura"; // Topico bajo el cual publica
 	
     private MqttClient client;
     
